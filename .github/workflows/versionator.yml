@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - 'main'
+    # Don't self-trigger
+    paths-ignore:
+      - '**/README.md'
+      - ".github/workflows/image-build.yml"
   schedule:
     - cron:  '13,43 * * * *'
 
