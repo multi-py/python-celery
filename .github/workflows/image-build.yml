@@ -23,6 +23,7 @@ jobs:
 
       - name: "Create and push"
         uses: multi-py/action-python-image-builder@v1
+        timeout-minutes: 60
         with:
           package: "celery[gevent]"
           package_latest_version: "5.2.3"
