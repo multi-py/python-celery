@@ -1,0 +1,32 @@
+
+name: Celery Version Updater
+
+# Every 30 minutes check for a new version of the package.
+on:
+  push:
+    branches:
+      - 'main'
+    # Don't self-trigger
+    paths-ignore:
+      - '**/README.md'
+      - ".github/workflows/image-build.yml"
+  schedule:
+    - cron:  '13,43 * * * *'
+
+
+jobs:
+  Version-Updater:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKFLOW_GITHUB_TOKEN }}
+
+      - name: "Update Build"
+        uses: multi-py/action-python-versionator@main
+        with:
+          package: "celery"
+          git_name: "Robert Hafner"
+          git_email: "tedivm@tedivm.com"
+          action_path: ${{ github.workspace }}/.github/workflows/image-build.yml

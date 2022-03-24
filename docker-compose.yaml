@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  worker-scheduler:
+    build:
+      context: .
+      args:
+        package_version: 5.2.3
+        package: celery[gevent]
+    environment:
+      - 'CELERY_BROKER=pyamqp://guest@rabbitmq//'
+      - "ENABLE_BEAT=true"
+    depends_on:
+      - rabbitmq
+
+  worker:
+    build:
+      context: .
+      args:
+        package_version: 5.2.3
+        package: celery[gevent]
+    environment:
+      - 'CELERY_BROKER=pyamqp://guest@rabbitmq//'
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq
