@@ -5,15 +5,11 @@ on:
   push:
     branches:
       - 'main'
-    paths-ignore:
-      - '**/README.md'
-      - 'templates/**'
-      - ".github/workflows/versionator.yml"
   schedule:
     - cron:  '4 0 * * WED'
 
 jobs:
-  Uvicorn-Builder:
+  Celery-Builder:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
