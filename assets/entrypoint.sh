@@ -51,5 +51,13 @@ fi
 
 COMMAND="$COMMAND --loglevel=${LOG_LEVEL:-INFO}"
 
-echo $COMMAND
-$COMMAND
+if [[ "$RELOAD" == "true" ]]; then
+  echo "Starting in development mode- celery worker will be restarted when files change."
+  echo python -m watchfiles "$COMMAND" /app
+  python -m watchfiles "$COMMAND" /app
+else
+  echo $COMMAND
+  $COMMAND
+fi
+
+

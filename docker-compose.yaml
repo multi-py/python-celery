@@ -10,6 +10,7 @@ services:
     environment:
       - 'CELERY_BROKER=pyamqp://guest@rabbitmq//'
       - "ENABLE_BEAT=true"
+      - "RELOAD=true"
     depends_on:
       - rabbitmq
 

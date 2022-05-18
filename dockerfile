@@ -14,7 +14,7 @@ ARG package_version
 RUN if which apk ; then apk add python3-dev libffi-dev libevent-dev build-base ; fi
 
 # Install package and build all dependencies.
-RUN pip install $package==$package_version
+RUN pip install $package==$package_version watchfiles
 
 # Build our actual container now.
 FROM python:$publish_target
