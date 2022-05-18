@@ -1,6 +1,6 @@
 ## Environment Variables
 
-These variables are in addition to the envronment variables defined by Celery itself.
+These variables are in addition to the environment variables defined by Celery itself.
 
 ### `ENABLE_BEAT`
 
