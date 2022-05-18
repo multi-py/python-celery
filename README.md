@@ -178,7 +178,7 @@ Choosing the right pool is extremely important for efficient use of resources. A
 
 ## Environment Variables
 
-These variables are in addition to the envronment variables defined by Celery itself.
+These variables are in addition to the environment variables defined by Celery itself.
 
 ### `ENABLE_BEAT`
 
@@ -229,7 +229,7 @@ Where to find the prestart script, if a developer adds one.
 
 ### `RELOAD`
 
-If any files change celery will be restarted, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
+If `RELOAD` is set to `true` and any files in the `/app` directory change celery will be restarted, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
 
 ## Python Versions
 
