@@ -11,7 +11,7 @@ ARG package_version
 
 # Only add build tools for alpine image. The ubuntu based images have build tools already.
 # Only runs if `apk` is on the system.
-RUN if which apk ; then apk add python3-dev libffi-dev libevent-dev build-base ; fi
+RUN if which apk ; then apk add python3-dev libffi-dev libevent-dev build-base cargo curl bash gcc musl-dev; fi
 
 # Install rust to compile watchfiles.
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
@@ -19,6 +19,8 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install package and build all dependencies.
 RUN pip install $package==$package_version watchfiles
+
+RUN ls -lah /usr/local/lib
 
 # Build our actual container now.
 FROM python:$publish_target
@@ -36,6 +38,7 @@ LABEL org.opencontainers.image.description="python:$publish_target $package:$pac
 
 # Used for Celery Beat.
 RUN mkdir /var/celery
+
 
 # Copy all of the python files built in the Builder container into this smaller container.
 COPY --from=Builder /usr/local/lib/python$python_version /usr/local/lib/python$python_version
