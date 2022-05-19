@@ -52,3 +52,5 @@ Where to find the prestart script, if a developer adds one.
 ### `RELOAD`
 
 If `RELOAD` is set to `true` and any files in the `/app` directory change celery will be restarted, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
+
+This functionality is not available on the `linux/arm/v7` images.
