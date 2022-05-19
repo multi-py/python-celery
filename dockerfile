@@ -13,6 +13,10 @@ ARG package_version
 # Only runs if `apk` is on the system.
 RUN if which apk ; then apk add python3-dev libffi-dev libevent-dev build-base ; fi
 
+# Install rust to compile watchfiles.
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 # Install package and build all dependencies.
 RUN pip install $package==$package_version watchfiles
 
