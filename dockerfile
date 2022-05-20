@@ -12,21 +12,20 @@ ARG TARGETPLATFORM
 
 # Only add build tools for alpine image. The ubuntu based images have build tools already.
 # Only runs if `apk` is on the system.
-RUN if which apk ; then apk add python3-dev libffi-dev libevent-dev build-base; fi
+RUN if which apk ; then apk add python3-dev libffi-dev libevent-dev build-base bash; fi
 
 # Install rust on alpine if not using linux/arm/v7
-RUN if [ which apk && "$TARGETPLATFORM" != "linux/arm/v7" ] ; then apk add cargo rust gcc musl-dev; fi
+RUN bash -c 'if which apk && [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then apk add cargo rust gcc musl-dev; fi'
 
 # Install rust on alpine if not using linux/arm/v7
-RUN if [ which apt-get  && "$TARGETPLATFORM" != "linux/arm/v7" ] ; then curl https://sh.rustup.rs -sSf | bash -s -- -y; fi
+RUN bash -c 'if which apt-get && [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then curl https://sh.rustup.rs -sSf | bash -s -- -y; fi'
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 
 # Watchfiles will not work on linux/arm/v7.
-RUN if [ "$TARGETPLATFORM" == "linux/arm/v7" ] ; then pip install $package==$package_version ; fi
-RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ] ; then pip install $package==$package_version watchfiles ; fi
+RUN bash -c 'if [[ "$TARGETPLATFORM" == "linux/arm/v7" ]] ; then pip install $package==$package_version ; fi'
+RUN bash -c 'if [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then pip install $package==$package_version watchfiles ; fi'
 
-RUN ls -lah /usr/local/lib
 
 # Build our actual container now.
 FROM python:$publish_target
