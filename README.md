@@ -33,6 +33,7 @@ Looking for the containers? [Head over to the Github Container Registry](https:/
       * [APP_MODULE](#app_module)
       * [PRE_START_PATH](#pre_start_path)
       * [RELOAD](#reload)
+      * [RELOAD_SIGINT_TIMEOUT](#reload_sigint_timeout)
    * [Python Versions](#python-versions)
    * [Image Variants](#image-variants)
       * [Full](#full)
@@ -232,6 +233,12 @@ Where to find the prestart script, if a developer adds one.
 If `RELOAD` is set to `true` and any files in the `/app` directory change celery will be restarted, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
 
 This functionality is not available on the `linux/arm/v7` images.
+
+### `RELOAD_SIGINT_TIMEOUT`
+
+When `RELOAD` is set this value determines how long to wait for the worker to gracefully shutdown before forcefully terminating it and reloading.
+
+Defaults to 30 seconds.
 
 ## Python Versions
 
