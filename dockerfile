@@ -24,7 +24,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Watchfiles will not work on linux/arm/v7.
 RUN bash -c 'if [[ "$TARGETPLATFORM" == "linux/arm/v7" ]] ; then pip install $package==$package_version ; fi'
-RUN bash -c 'if [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then pip install $package==$package_version watchfiles ; fi'
+RUN bash -c 'if [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then pip install $package==$package_version watchfiles>=0.15 ; fi'
 
 
 # Build our actual container now.
