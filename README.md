@@ -150,7 +150,7 @@ By default the celery application should be inside the package in a variable nam
 If you are using pip to install dependencies your dockerfile could look like this-
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-celery:py3.10-5.2.7
+FROM ghcr.io/multi-py/python-celery:py3.10-5.3.0
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir -r /requirements
@@ -293,8 +293,8 @@ If you get use out of these containers please consider sponsoring me using Githu
 </center>
 
 ## Tags
-* Recommended Image: `ghcr.io/multi-py/python-celery:py3.10-5.2.7`
-* Slim Image: `ghcr.io/multi-py/python-celery:py3.10-slim-5.2.7`
+* Recommended Image: `ghcr.io/multi-py/python-celery:py3.10-5.3.0`
+* Slim Image: `ghcr.io/multi-py/python-celery:py3.10-slim-5.3.0`
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
@@ -305,6 +305,11 @@ Tags are based on the package version, python version, and the upstream containe
 | latest | 3.8 | py3.8-latest | py3.8-slim-latest | py3.8-alpine-latest |
 | latest | 3.7 | py3.7-latest | py3.7-slim-latest | py3.7-alpine-latest |
 | latest | 3.6 | py3.6-latest | py3.6-slim-latest | py3.6-alpine-latest |
+| 5.3.0 | 3.10 | py3.10-5.3.0 | py3.10-slim-5.3.0 | py3.10-alpine-5.3.0 |
+| 5.3.0 | 3.9 | py3.9-5.3.0 | py3.9-slim-5.3.0 | py3.9-alpine-5.3.0 |
+| 5.3.0 | 3.8 | py3.8-5.3.0 | py3.8-slim-5.3.0 | py3.8-alpine-5.3.0 |
+| 5.3.0 | 3.7 | py3.7-5.3.0 | py3.7-slim-5.3.0 | py3.7-alpine-5.3.0 |
+| 5.3.0 | 3.6 | py3.6-5.3.0 | py3.6-slim-5.3.0 | py3.6-alpine-5.3.0 |
 | 5.2.7 | 3.10 | py3.10-5.2.7 | py3.10-slim-5.2.7 | py3.10-alpine-5.2.7 |
 | 5.2.7 | 3.9 | py3.9-5.2.7 | py3.9-slim-5.2.7 | py3.9-alpine-5.2.7 |
 | 5.2.7 | 3.8 | py3.8-5.2.7 | py3.8-slim-5.2.7 | py3.8-alpine-5.2.7 |
@@ -325,11 +330,6 @@ Tags are based on the package version, python version, and the upstream containe
 | 5.2.4 | 3.8 | py3.8-5.2.4 | py3.8-slim-5.2.4 | py3.8-alpine-5.2.4 |
 | 5.2.4 | 3.7 | py3.7-5.2.4 | py3.7-slim-5.2.4 | py3.7-alpine-5.2.4 |
 | 5.2.4 | 3.6 | py3.6-5.2.4 | py3.6-slim-5.2.4 | py3.6-alpine-5.2.4 |
-| 5.2.3 | 3.10 | py3.10-5.2.3 | py3.10-slim-5.2.3 | py3.10-alpine-5.2.3 |
-| 5.2.3 | 3.9 | py3.9-5.2.3 | py3.9-slim-5.2.3 | py3.9-alpine-5.2.3 |
-| 5.2.3 | 3.8 | py3.8-5.2.3 | py3.8-slim-5.2.3 | py3.8-alpine-5.2.3 |
-| 5.2.3 | 3.7 | py3.7-5.2.3 | py3.7-slim-5.2.3 | py3.7-alpine-5.2.3 |
-| 5.2.3 | 3.6 | py3.6-5.2.3 | py3.6-slim-5.2.3 | py3.6-alpine-5.2.3 |
 
 
 ### Older Tags
