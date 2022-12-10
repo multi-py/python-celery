@@ -80,13 +80,13 @@ The Full Images use the base Python Docker images as their parent. These images 
 To pull the latest full version:
 
 ```bash
-docker pull ghcr.io/multi-py/python-celery:py3.10-LATEST
+docker pull ghcr.io/multi-py/python-celery:py3.11-LATEST
 ```
 
 To include it in the dockerfile instead:
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-celery:py3.10-LATEST
+FROM ghcr.io/multi-py/python-celery:py3.11-LATEST
 ```
 
 ### Using the Slim Image
@@ -96,13 +96,13 @@ The Slim Images use the base Python Slim Docker images as their parent. These im
 To pull the latest slim version:
 
 ```bash
-docker pull ghcr.io/multi-py/python-celery:py3.10-slim-LATEST
+docker pull ghcr.io/multi-py/python-celery:py3.11-slim-LATEST
 ```
 
 To include it in the dockerfile instead:
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-celery:py3.10-slim-LATEST
+FROM ghcr.io/multi-py/python-celery:py3.11-slim-LATEST
 ```
 
 
@@ -117,13 +117,13 @@ In theory these images are smaller than even the slim images, but this amounts t
 To pull the latest alpine version:
 
 ```bash
-docker pull ghcr.io/multi-py/python-celery:py3.10-alpine-LATEST
+docker pull ghcr.io/multi-py/python-celery:py3.11-alpine-LATEST
 ```
 
 To include it in the dockerfile instead:
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-celery:py3.10-alpine-LATEST
+FROM ghcr.io/multi-py/python-celery:py3.11-alpine-LATEST
 ```
 
 
@@ -133,9 +133,9 @@ FROM ghcr.io/multi-py/python-celery:py3.10-alpine-LATEST
 It's also possible to copy just the Python packages themselves. This is particularly useful when you want to use the precompiled libraries from multiple containers.
 
 ```dockerfile
-FROM python:3.10
+FROM python:3.11
 
-COPY --from=ghcr.io/multi-py/python-celery:py3.10-slim-LATEST /usr/local/lib/python3.10/site-packages/* /usr/local/lib/python3.10/site-packages/
+COPY --from=ghcr.io/multi-py/python-celery:py3.11-slim-LATEST /usr/local/lib/python3.11/site-packages/* /usr/local/lib/python3.11/site-packages/
 ```
 
 ### Add Your App
@@ -150,7 +150,7 @@ By default the celery application should be inside the package in a variable nam
 If you are using pip to install dependencies your dockerfile could look like this-
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-celery:py3.10-5.2.7
+FROM ghcr.io/multi-py/python-celery:py3.11-5.2.7
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir -r /requirements
@@ -244,11 +244,11 @@ Defaults to 30 seconds.
 
 This project actively supports these Python versions:
 
+* 3.11
 * 3.10
 * 3.9
 * 3.8
 * 3.7
-* 3.6
 
 
 ## Image Variants
@@ -293,43 +293,43 @@ If you get use out of these containers please consider sponsoring me using Githu
 </center>
 
 ## Tags
-* Recommended Image: `ghcr.io/multi-py/python-celery:py3.10-5.2.7`
-* Slim Image: `ghcr.io/multi-py/python-celery:py3.10-slim-5.2.7`
+* Recommended Image: `ghcr.io/multi-py/python-celery:py3.11-5.2.7`
+* Slim Image: `ghcr.io/multi-py/python-celery:py3.11-slim-5.2.7`
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
 | celery Version | Python Version | Full Container | Slim Container | Alpine Container |
 |-----------------------|----------------|----------------|----------------|------------------|
+| latest | 3.11 | py3.11-latest | py3.11-slim-latest | py3.11-alpine-latest |
 | latest | 3.10 | py3.10-latest | py3.10-slim-latest | py3.10-alpine-latest |
 | latest | 3.9 | py3.9-latest | py3.9-slim-latest | py3.9-alpine-latest |
 | latest | 3.8 | py3.8-latest | py3.8-slim-latest | py3.8-alpine-latest |
 | latest | 3.7 | py3.7-latest | py3.7-slim-latest | py3.7-alpine-latest |
-| latest | 3.6 | py3.6-latest | py3.6-slim-latest | py3.6-alpine-latest |
+| 5.2.7 | 3.11 | py3.11-5.2.7 | py3.11-slim-5.2.7 | py3.11-alpine-5.2.7 |
 | 5.2.7 | 3.10 | py3.10-5.2.7 | py3.10-slim-5.2.7 | py3.10-alpine-5.2.7 |
 | 5.2.7 | 3.9 | py3.9-5.2.7 | py3.9-slim-5.2.7 | py3.9-alpine-5.2.7 |
 | 5.2.7 | 3.8 | py3.8-5.2.7 | py3.8-slim-5.2.7 | py3.8-alpine-5.2.7 |
 | 5.2.7 | 3.7 | py3.7-5.2.7 | py3.7-slim-5.2.7 | py3.7-alpine-5.2.7 |
-| 5.2.7 | 3.6 | py3.6-5.2.7 | py3.6-slim-5.2.7 | py3.6-alpine-5.2.7 |
+| 5.2.6 | 3.11 | py3.11-5.2.6 | py3.11-slim-5.2.6 | py3.11-alpine-5.2.6 |
 | 5.2.6 | 3.10 | py3.10-5.2.6 | py3.10-slim-5.2.6 | py3.10-alpine-5.2.6 |
 | 5.2.6 | 3.9 | py3.9-5.2.6 | py3.9-slim-5.2.6 | py3.9-alpine-5.2.6 |
 | 5.2.6 | 3.8 | py3.8-5.2.6 | py3.8-slim-5.2.6 | py3.8-alpine-5.2.6 |
 | 5.2.6 | 3.7 | py3.7-5.2.6 | py3.7-slim-5.2.6 | py3.7-alpine-5.2.6 |
-| 5.2.6 | 3.6 | py3.6-5.2.6 | py3.6-slim-5.2.6 | py3.6-alpine-5.2.6 |
+| 5.2.5 | 3.11 | py3.11-5.2.5 | py3.11-slim-5.2.5 | py3.11-alpine-5.2.5 |
 | 5.2.5 | 3.10 | py3.10-5.2.5 | py3.10-slim-5.2.5 | py3.10-alpine-5.2.5 |
 | 5.2.5 | 3.9 | py3.9-5.2.5 | py3.9-slim-5.2.5 | py3.9-alpine-5.2.5 |
 | 5.2.5 | 3.8 | py3.8-5.2.5 | py3.8-slim-5.2.5 | py3.8-alpine-5.2.5 |
 | 5.2.5 | 3.7 | py3.7-5.2.5 | py3.7-slim-5.2.5 | py3.7-alpine-5.2.5 |
-| 5.2.5 | 3.6 | py3.6-5.2.5 | py3.6-slim-5.2.5 | py3.6-alpine-5.2.5 |
+| 5.2.4 | 3.11 | py3.11-5.2.4 | py3.11-slim-5.2.4 | py3.11-alpine-5.2.4 |
 | 5.2.4 | 3.10 | py3.10-5.2.4 | py3.10-slim-5.2.4 | py3.10-alpine-5.2.4 |
 | 5.2.4 | 3.9 | py3.9-5.2.4 | py3.9-slim-5.2.4 | py3.9-alpine-5.2.4 |
 | 5.2.4 | 3.8 | py3.8-5.2.4 | py3.8-slim-5.2.4 | py3.8-alpine-5.2.4 |
 | 5.2.4 | 3.7 | py3.7-5.2.4 | py3.7-slim-5.2.4 | py3.7-alpine-5.2.4 |
-| 5.2.4 | 3.6 | py3.6-5.2.4 | py3.6-slim-5.2.4 | py3.6-alpine-5.2.4 |
+| 5.2.3 | 3.11 | py3.11-5.2.3 | py3.11-slim-5.2.3 | py3.11-alpine-5.2.3 |
 | 5.2.3 | 3.10 | py3.10-5.2.3 | py3.10-slim-5.2.3 | py3.10-alpine-5.2.3 |
 | 5.2.3 | 3.9 | py3.9-5.2.3 | py3.9-slim-5.2.3 | py3.9-alpine-5.2.3 |
 | 5.2.3 | 3.8 | py3.8-5.2.3 | py3.8-slim-5.2.3 | py3.8-alpine-5.2.3 |
 | 5.2.3 | 3.7 | py3.7-5.2.3 | py3.7-slim-5.2.3 | py3.7-alpine-5.2.3 |
-| 5.2.3 | 3.6 | py3.6-5.2.3 | py3.6-slim-5.2.3 | py3.6-alpine-5.2.3 |
 
 
 ### Older Tags
