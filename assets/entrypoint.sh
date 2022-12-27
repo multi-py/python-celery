@@ -54,7 +54,7 @@ COMMAND="$COMMAND --loglevel=${LOG_LEVEL:-INFO}"
 if [[ "$RELOAD" == "true" ]]; then
   echo "Starting in development mode- celery worker will be restarted when files change."
   echo python -m watchfiles --sigint-timeout ${RELOAD_SIGINT_TIMEOUT:-30} "$COMMAND" /app
-  python -m watchfiles ${RELOAD_SIGINT_TIMEOUT:-30} "$COMMAND" /app
+  python -m watchfiles --sigint-timeout ${RELOAD_SIGINT_TIMEOUT:-30} "$COMMAND" /app
 else
   echo $COMMAND
   $COMMAND
