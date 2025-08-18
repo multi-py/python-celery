@@ -150,7 +150,7 @@ By default the celery application should be inside the package in a variable nam
 If you are using pip to install dependencies your dockerfile could look like this-
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-celery:py3.12-5.4.0
+FROM ghcr.io/multi-py/python-celery:py3.12-5.5.3
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir -r /requirements
@@ -293,8 +293,8 @@ If you get use out of these containers please consider sponsoring me using Githu
 </center>
 
 ## Tags
-* Recommended Image: `ghcr.io/multi-py/python-celery:py3.12-5.4.0`
-* Slim Image: `ghcr.io/multi-py/python-celery:py3.12-slim-5.4.0`
+* Recommended Image: `ghcr.io/multi-py/python-celery:py3.12-5.5.3`
+* Slim Image: `ghcr.io/multi-py/python-celery:py3.12-slim-5.5.3`
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
@@ -305,31 +305,31 @@ Tags are based on the package version, python version, and the upstream containe
 | latest | 3.10 | py3.10-latest | py3.10-slim-latest | py3.10-alpine-latest |
 | latest | 3.9 | py3.9-latest | py3.9-slim-latest | py3.9-alpine-latest |
 | latest | 3.8 | py3.8-latest | py3.8-slim-latest | py3.8-alpine-latest |
+| 5.5.3 | 3.12 | py3.12-5.5.3 | py3.12-slim-5.5.3 | py3.12-alpine-5.5.3 |
+| 5.5.3 | 3.11 | py3.11-5.5.3 | py3.11-slim-5.5.3 | py3.11-alpine-5.5.3 |
+| 5.5.3 | 3.10 | py3.10-5.5.3 | py3.10-slim-5.5.3 | py3.10-alpine-5.5.3 |
+| 5.5.3 | 3.9 | py3.9-5.5.3 | py3.9-slim-5.5.3 | py3.9-alpine-5.5.3 |
+| 5.5.3 | 3.8 | py3.8-5.5.3 | py3.8-slim-5.5.3 | py3.8-alpine-5.5.3 |
+| 5.5.2 | 3.12 | py3.12-5.5.2 | py3.12-slim-5.5.2 | py3.12-alpine-5.5.2 |
+| 5.5.2 | 3.11 | py3.11-5.5.2 | py3.11-slim-5.5.2 | py3.11-alpine-5.5.2 |
+| 5.5.2 | 3.10 | py3.10-5.5.2 | py3.10-slim-5.5.2 | py3.10-alpine-5.5.2 |
+| 5.5.2 | 3.9 | py3.9-5.5.2 | py3.9-slim-5.5.2 | py3.9-alpine-5.5.2 |
+| 5.5.2 | 3.8 | py3.8-5.5.2 | py3.8-slim-5.5.2 | py3.8-alpine-5.5.2 |
+| 5.5.1 | 3.12 | py3.12-5.5.1 | py3.12-slim-5.5.1 | py3.12-alpine-5.5.1 |
+| 5.5.1 | 3.11 | py3.11-5.5.1 | py3.11-slim-5.5.1 | py3.11-alpine-5.5.1 |
+| 5.5.1 | 3.10 | py3.10-5.5.1 | py3.10-slim-5.5.1 | py3.10-alpine-5.5.1 |
+| 5.5.1 | 3.9 | py3.9-5.5.1 | py3.9-slim-5.5.1 | py3.9-alpine-5.5.1 |
+| 5.5.1 | 3.8 | py3.8-5.5.1 | py3.8-slim-5.5.1 | py3.8-alpine-5.5.1 |
+| 5.5.0 | 3.12 | py3.12-5.5.0 | py3.12-slim-5.5.0 | py3.12-alpine-5.5.0 |
+| 5.5.0 | 3.11 | py3.11-5.5.0 | py3.11-slim-5.5.0 | py3.11-alpine-5.5.0 |
+| 5.5.0 | 3.10 | py3.10-5.5.0 | py3.10-slim-5.5.0 | py3.10-alpine-5.5.0 |
+| 5.5.0 | 3.9 | py3.9-5.5.0 | py3.9-slim-5.5.0 | py3.9-alpine-5.5.0 |
+| 5.5.0 | 3.8 | py3.8-5.5.0 | py3.8-slim-5.5.0 | py3.8-alpine-5.5.0 |
 | 5.4.0 | 3.12 | py3.12-5.4.0 | py3.12-slim-5.4.0 | py3.12-alpine-5.4.0 |
 | 5.4.0 | 3.11 | py3.11-5.4.0 | py3.11-slim-5.4.0 | py3.11-alpine-5.4.0 |
 | 5.4.0 | 3.10 | py3.10-5.4.0 | py3.10-slim-5.4.0 | py3.10-alpine-5.4.0 |
 | 5.4.0 | 3.9 | py3.9-5.4.0 | py3.9-slim-5.4.0 | py3.9-alpine-5.4.0 |
 | 5.4.0 | 3.8 | py3.8-5.4.0 | py3.8-slim-5.4.0 | py3.8-alpine-5.4.0 |
-| 5.3.6 | 3.12 | py3.12-5.3.6 | py3.12-slim-5.3.6 | py3.12-alpine-5.3.6 |
-| 5.3.6 | 3.11 | py3.11-5.3.6 | py3.11-slim-5.3.6 | py3.11-alpine-5.3.6 |
-| 5.3.6 | 3.10 | py3.10-5.3.6 | py3.10-slim-5.3.6 | py3.10-alpine-5.3.6 |
-| 5.3.6 | 3.9 | py3.9-5.3.6 | py3.9-slim-5.3.6 | py3.9-alpine-5.3.6 |
-| 5.3.6 | 3.8 | py3.8-5.3.6 | py3.8-slim-5.3.6 | py3.8-alpine-5.3.6 |
-| 5.3.5 | 3.12 | py3.12-5.3.5 | py3.12-slim-5.3.5 | py3.12-alpine-5.3.5 |
-| 5.3.5 | 3.11 | py3.11-5.3.5 | py3.11-slim-5.3.5 | py3.11-alpine-5.3.5 |
-| 5.3.5 | 3.10 | py3.10-5.3.5 | py3.10-slim-5.3.5 | py3.10-alpine-5.3.5 |
-| 5.3.5 | 3.9 | py3.9-5.3.5 | py3.9-slim-5.3.5 | py3.9-alpine-5.3.5 |
-| 5.3.5 | 3.8 | py3.8-5.3.5 | py3.8-slim-5.3.5 | py3.8-alpine-5.3.5 |
-| 5.3.4 | 3.12 | py3.12-5.3.4 | py3.12-slim-5.3.4 | py3.12-alpine-5.3.4 |
-| 5.3.4 | 3.11 | py3.11-5.3.4 | py3.11-slim-5.3.4 | py3.11-alpine-5.3.4 |
-| 5.3.4 | 3.10 | py3.10-5.3.4 | py3.10-slim-5.3.4 | py3.10-alpine-5.3.4 |
-| 5.3.4 | 3.9 | py3.9-5.3.4 | py3.9-slim-5.3.4 | py3.9-alpine-5.3.4 |
-| 5.3.4 | 3.8 | py3.8-5.3.4 | py3.8-slim-5.3.4 | py3.8-alpine-5.3.4 |
-| 5.3.1 | 3.12 | py3.12-5.3.1 | py3.12-slim-5.3.1 | py3.12-alpine-5.3.1 |
-| 5.3.1 | 3.11 | py3.11-5.3.1 | py3.11-slim-5.3.1 | py3.11-alpine-5.3.1 |
-| 5.3.1 | 3.10 | py3.10-5.3.1 | py3.10-slim-5.3.1 | py3.10-alpine-5.3.1 |
-| 5.3.1 | 3.9 | py3.9-5.3.1 | py3.9-slim-5.3.1 | py3.9-alpine-5.3.1 |
-| 5.3.1 | 3.8 | py3.8-5.3.1 | py3.8-slim-5.3.1 | py3.8-alpine-5.3.1 |
 
 
 ### Older Tags

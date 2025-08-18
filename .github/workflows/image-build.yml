@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         python_versions: ["3.9", "3.10", "3.11", "3.12", "3.13"] 
-        package_versions: ["5.3.1", "5.3.4", "5.3.5", "5.3.6", "5.4.0"]
+        package_versions: ["5.4.0", "5.5.0", "5.5.1", "5.5.2", "5.5.3"]
         target_base: ["full", "slim", "alpine"]
     steps:
       - name: Checkout repository
@@ -26,7 +26,7 @@ jobs:
         timeout-minutes: 90
         with:
           package: "celery[gevent]"
-          package_latest_version: "5.4.0"
+          package_latest_version: "5.5.3"
           maintainer: "Robert Hafner <tedivm@tedivm.com>"
           python_version: ${{ matrix.python_versions }}
           target_base: ${{ matrix.target_base }}
