@@ -1,6 +1,7 @@
 ARG python_version=3.9
 ARG build_target=$python_version
 ARG publish_target=$python_version
+ARG OTEL_ENABLED=false
 
 FROM python:$build_target as Builder
 
@@ -9,6 +10,7 @@ ARG build_target
 ARG package
 ARG package_version
 ARG TARGETPLATFORM
+ARG OTEL_ENABLED
 
 # Only add build tools for alpine image. The ubuntu based images have build tools already.
 # Only runs if `apk` is on the system.
@@ -26,6 +28,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN bash -c 'if [[ "$TARGETPLATFORM" == "linux/arm/v7" ]] ; then pip install $package==$package_version ; fi'
 RUN bash -c 'if [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then pip install $package==$package_version watchfiles>=0.15 ; fi'
 
+# Install OpenTelemetry packages if enabled.
+RUN bash -c 'if [[ "$OTEL_ENABLED" == "true" ]] ; then pip install opentelemetry-distro opentelemetry-exporter-otlp && opentelemetry-bootstrap -a install ; fi'
+
 
 # Build our actual container now.
 FROM python:$publish_target
@@ -36,9 +41,11 @@ ARG python_version
 ARG package
 ARG maintainer=""
 ARG TARGETPLATFORM=""
+ARG OTEL_ENABLED=false
 LABEL python=$python_version
 LABEL package=$package
 LABEL maintainer=$maintainer
+LABEL otel_enabled=$OTEL_ENABLED
 LABEL org.opencontainers.image.description="python:$publish_target $package:$package_version $TARGETPLATFORM"
 
 # Used for Celery Beat.
@@ -47,6 +54,9 @@ RUN mkdir /var/celery
 
 # Copy all of the python files built in the Builder container into this smaller container.
 COPY --from=Builder /usr/local/lib/python$python_version /usr/local/lib/python$python_version
+
+# Copy binaries (e.g. opentelemetry-instrument) installed by pip in the Builder stage.
+COPY --from=Builder /usr/local/bin /usr/local/bin
 
 # Entrypoint Script
 COPY ./assets/entrypoint.sh /entrypoint.sh

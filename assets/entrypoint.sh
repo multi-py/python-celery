@@ -30,9 +30,15 @@ fi
 # End of tiangolo/gunicorn-uvicorn-docker block
 #
 
+if [[ "$OTEL_ENABLED" == "true" ]]; then
+  OTEL_CMD="opentelemetry-instrument"
+  echo "OpenTelemetry auto-instrumentation enabled"
+else
+  OTEL_CMD=""
+fi
 
 if [[ "$ENABLE_BEAT" == "true" ]]; then
-  COMMAND="python -m celery -A $APP_MODULE beat -s /var/celery/celerybeat-schedule"
+  COMMAND="$OTEL_CMD python -m celery -A $APP_MODULE beat -s /var/celery/celerybeat-schedule"
 else
   POOL=${POOL:-prefork}
   if [[ "$POOL" = "gevent" ]] || [[ "$POOL" = "eventlet" ]] ; then
@@ -40,7 +46,7 @@ else
   else
     CONCURRENCY=${CONCURRENCY:-2}
   fi
-  COMMAND="python -m celery -A $APP_MODULE worker \
+  COMMAND="$OTEL_CMD python -m celery -A $APP_MODULE worker \
     --pool=$POOL \
     --concurrency=$CONCURRENCY \
     --prefetch-multiplier=${PREFETCH_MULTIPLIER:-4}"
