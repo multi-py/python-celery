@@ -34,6 +34,7 @@ Looking for the containers? [Head over to the Github Container Registry](https:/
       * [PRE_START_PATH](#pre_start_path)
       * [RELOAD](#reload)
       * [RELOAD_SIGINT_TIMEOUT](#reload_sigint_timeout)
+      * [OTEL_ENABLED](#otel_enabled)
    * [Python Versions](#python-versions)
    * [Image Variants](#image-variants)
       * [Full](#full)
@@ -239,6 +240,10 @@ This functionality is not available on the `linux/arm/v7` images.
 When `RELOAD` is set this value determines how long to wait for the worker to gracefully shutdown before forcefully terminating it and reloading.
 
 Defaults to 30 seconds.
+
+### `OTEL_ENABLED`
+
+When set to `true` the container will enable OpenTelemetry (OTel) instrumentation for the Celery worker. This is done by installing the `opentelemetry-distro` and `opentelemetry-exporter-otlp` packages at startup and enabling auto-instrumentation. Any additional instrumentation packages (e.g. `opentelemetry-instrumentation-celery`) must be installed separately.
 
 ## Python Versions
 
