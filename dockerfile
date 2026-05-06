@@ -10,7 +10,6 @@ ARG build_target
 ARG package
 ARG package_version
 ARG TARGETPLATFORM
-ARG OTEL_ENABLED
 
 # Only add build tools for alpine image. The ubuntu based images have build tools already.
 # Only runs if `apk` is on the system.
@@ -28,8 +27,8 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN bash -c 'if [[ "$TARGETPLATFORM" == "linux/arm/v7" ]] ; then pip install $package==$package_version ; fi'
 RUN bash -c 'if [[ "$TARGETPLATFORM" != "linux/arm/v7" ]] ; then pip install $package==$package_version watchfiles>=0.15 ; fi'
 
-# Install OpenTelemetry packages if enabled.
-RUN bash -c 'if [[ "$OTEL_ENABLED" == "true" ]] ; then pip install opentelemetry-distro opentelemetry-exporter-otlp && opentelemetry-bootstrap -a install ; fi'
+# Install OpenTelemetry packages
+RUN pip install opentelemetry-distro opentelemetry-exporter-otlp && opentelemetry-bootstrap -a install
 
 
 # Build our actual container now.
